@@ -1,1 +1,1 @@
-# train_your_own_sora
+# Latte text to video
