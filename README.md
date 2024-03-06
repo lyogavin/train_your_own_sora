@@ -7,7 +7,7 @@
 
 Latte is by far the closest to SORA among the open-source video generation models.
 
-Original Latte didn't provide text to video training code. We reproduced the text to video training based on the paper.
+Original Latte didn't provide text to video training code. **We reproduced the paper and implemented the text to video training based on the paper.**
 
 Please find out more details from the paper:
 
@@ -17,6 +17,14 @@ Please find out more details from the paper:
 
  ![The architecture of Latte](visuals/architecture.svg)
 
+## Improments
+
+The following improvements are implemented to the training code:
+
+* added the support of gradient accumulation (config: `gradient_accumulation_steps`)
+* added valiation samples generation to generate (config: `validation`) testing videos in the training process
+* added wandb support 
+* added classifier-free guidance training (config: `cfg_random_null_text_ratio`)
 
 
 
