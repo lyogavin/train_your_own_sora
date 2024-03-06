@@ -1,0 +1,86 @@
+# dataset
+dataset: "t2v"
+video_folder: 'path_to_video_files'
+csv_path: 'path_to_video_files_prompts_csv'
+
+
+# pretrained models
+pretrained_model_path: "/PATH_TO_DOWNLOADED_PRETRAINED_LATTE_DIR/t2v_required_models/"
+
+# pretrained t2v checkpint file:
+pretrained: "/root/pretrained_Latte/t2v.pt"
+
+# where to save results:
+results_dir: "./results_img"
+
+# model config: 
+model: LatteT2V
+video_length: 16
+num_frames: 16
+image_size: 256 # choices=[256, 512]
+num_sampling_steps: 250
+frame_interval: 1
+fixed_spatial: False
+attention_bias: True
+learn_sigma: True # important
+extras: 78 # [1, 2, 78]
+
+# train config:
+save_ceph: True # important
+use_image_num: 8
+learning_rate: 1e-4
+ckpt_every: 1000
+clip_max_norm: 0.1
+start_clip_iter: 500000
+local_batch_size: 1 # important
+max_train_steps: 100000 #1000000
+global_seed: 3407
+num_workers: 8
+log_every: 100
+lr_warmup_steps: 0
+resume_from_checkpoint:
+gradient_accumulation_steps: 4
+num_classes:
+use_wandb: True
+validation_before_training: True
+cfg_random_null_text_ratio: 0.1
+
+# low VRAM and speed up training
+use_compile: False
+mixed_precision: False
+enable_xformers_memory_efficient_attention: True
+gradient_checkpointing: True
+
+
+# validation gen:
+validation:
+
+  # model config:
+  video_length: 16
+  image_size: [256, 256]
+  # # beta scheduleextras
+  beta_start: 0.0001
+  beta_end: 0.02
+  beta_schedule: "linear"
+  variance_type: "learned_range"
+
+  # model speedup
+  use_compile: False
+  use_fp16: True
+
+  # sample config:
+  seed:
+  run_time: 0
+  guidance_scale: 7.5
+  sample_method: 'PNDM'
+  num_sampling_steps: 50
+  enable_temporal_attentions: True
+  enable_vae_temporal_decoder: False # use temporal vae decoder from SVD, maybe reduce the video flicker (It's not widely tested)
+
+  # add your own testing prompts to validate the training process
+  text_prompt: [
+    'Yellow and black tropical fish dart through the sea.',
+    'An epic tornado attacking above aglowing city at night.',
+    'Slow pan upward of blazing oak fire in an indoor fireplace.',
+    "a photo of an astronaut riding a horse on mars",
+  ]
