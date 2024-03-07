@@ -118,6 +118,10 @@ Reference original [repo](https://maxin-cn.github.io/latte_project/) for how to 
 
 [![Website](https://img.shields.io/website?up_message=blog&url=https%3A%2F%2Fmedium.com%2F%40lyo.gavin&logo=medium&color=black)](https://medium.com/@lyo.gavin)
 
+### Little RedBook
+
+ ![redbook](visuals/redbook.png)
+
 
 ## Contribution 
 
