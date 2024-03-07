@@ -1,10 +1,6 @@
 ## Latte Text to Video Training
 
 
- ![The architecture of Latte](visuals/logo.png)
-
-
-
 Latte is by far the closest to SORA among the open-source video generation models.
 
 Original Latte didn't provide text to video training code. **We reproduced the paper and implemented the text to video training based on the paper.**
